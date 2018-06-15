@@ -86,6 +86,9 @@
                     console.log(response);
                 });*/
                 console.log('modifyend:');
+
+                // console.log(evt.feature.getGeometry().getCoordinates(), evt.feature.getProperties());
+                // console.log(evt.feature.getProperties());
                 console.log(featuresGeoJSON);
             }, this);
 
