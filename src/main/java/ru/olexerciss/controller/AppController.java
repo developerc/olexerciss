@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     @RequestMapping("/")
     public String helloPage(){
-        return "index3";
+        return "index4";
     }
 }
