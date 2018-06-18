@@ -101,7 +101,8 @@
         draw.on('drawend',
             function(evt) {
                 evt.feature.setProperties({
-                    'id' : nextid
+                    'id' : nextid,
+                    'name':'myCable2'
                 });
                 nextid++;
                 // console.log(evt.feature);
