@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ru.olexerciss.dao.FeatureLonLatDao;
+import ru.olexerciss.dao.impl.FeatureLonLatDaoImpl;
+import ru.olexerciss.entity.FeatureLonLat;
 
 @Configuration
 @PropertySource(value = "classpath:util.properties")
@@ -22,6 +25,11 @@ public class AppConfig {
         dataSource.setUsername(environment.getRequiredProperty("jdbc.mariadb.user"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.mariadb.password"));
         return dataSource;
+    }
+
+    @Bean
+    public FeatureLonLatDao featureLonLatDao(){
+        return new FeatureLonLatDaoImpl(FeatureLonLat.class);
     }
 
 }
