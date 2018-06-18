@@ -16,10 +16,12 @@ public class FeatureEntity {
     private String label;
     private String reserved;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private List<FeatureLonLat> geometryCoord  = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private List<FeatureThread> opticalThread = new ArrayList<>();
 
     public long getId() {
@@ -78,6 +80,8 @@ public class FeatureEntity {
         this.reserved = reserved;
     }
 
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", referencedColumnName = "id")
     public List<FeatureLonLat> getGeometryCoord() {
         return geometryCoord;
     }
@@ -86,6 +90,8 @@ public class FeatureEntity {
         this.geometryCoord = geometryCoord;
     }
 
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", referencedColumnName = "id")
     public List<FeatureThread> getOpticalThread() {
         return opticalThread;
     }
