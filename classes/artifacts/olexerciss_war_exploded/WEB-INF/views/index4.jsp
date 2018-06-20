@@ -46,7 +46,6 @@
             })
         })
     });
-
     //--добавим слой с готовыми линиями
     var geojsonObject = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString","coordinates":[[4466646.416733378,5756930.625162051],[4466801.679447082,5757077.527575786]]},"properties":{"id":1,"name":"myCable1"}}]};
     var source2 = new ol.source.Vector({
@@ -56,14 +55,11 @@
         source: source2
     });
     //добавим слой при загрузке. Редактировать его нельзя
-
-
     var map = new ol.Map({
         layers: [raster, layer2, vector],
         target: 'map',
         /*view: new ol.View({
             center: [-11000000, 4600000],
-
             zoom: 4
         })*/
         view : new ol.View({
@@ -74,7 +70,6 @@
     });
     var modify = new ol.interaction.Modify({source: source});
     map.addInteraction(modify);
-
     var typeSelect = document.getElementById('type');
     var draw; // global so we can remove it later
     function addInteraction() {
@@ -97,15 +92,17 @@
                     console.log(response);
                 });*/
                 console.log('modifyend:');
+
                 // console.log(evt.feature.getGeometry().getCoordinates(), evt.feature.getProperties());
                 // console.log(evt.feature.getProperties());
                 console.log(featuresGeoJSON);
             }, this);
+
         draw.on('drawend',
             function(evt) {
                 evt.feature.setProperties({
                     'id' : nextid,
-                    'name': 'myCable1'
+                    'name':'myCable2'
                 });
                 nextid++;
                 // console.log(evt.feature);
@@ -125,11 +122,14 @@
             },
             this);
     }
+
     typeSelect.onchange = function(e) {
         map.removeInteraction(draw);
         addInteraction();
     };
+
     addInteraction();
+
 </script>
 
 </body>
